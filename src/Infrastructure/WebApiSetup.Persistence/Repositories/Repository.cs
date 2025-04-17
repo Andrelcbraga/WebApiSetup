@@ -1,12 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using WebApiSetup.Domain.Common;
-using WebApiSetup.Persistence.Context;
+using WebApiSetup.Domain.Interfaces;
 
 namespace WebApiSetup.Persistence.Repositories
 {
@@ -31,7 +26,7 @@ namespace WebApiSetup.Persistence.Repositories
             return await DbSet.FindAsync(id);
         }
 
-        public virtual async Task<List<TEntity>> ObterTodos()
+        public virtual async Task<IEnumerable<TEntity>> ObterTodos()
         {
             return await DbSet.ToListAsync();
         }

@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Domain\WebApiSetup.Domain\WebApiSetup.Domain.csproj" />
+    <ProjectReference Include="..\..\Application\WebApiSetup.Application\WebApiSetup.Application.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\WebApiSetup.Persistence\WebApiSetup.Persistence.csproj" />
   </ItemGroup>
 
 </Project>
