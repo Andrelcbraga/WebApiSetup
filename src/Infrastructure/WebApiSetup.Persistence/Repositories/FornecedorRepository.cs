@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using WebApiSetup.Domain.Entities;
 using WebApiSetup.Domain.Interfaces;
-using WebApiSetup.Persistence.Context;
 
 namespace WebApiSetup.Persistence.Repositories
 {
@@ -25,5 +24,6 @@ namespace WebApiSetup.Persistence.Repositories
                 .Include(c => c.Endereco)
                 .FirstOrDefaultAsync(c => c.Id == id);
         }
+
     }
 }

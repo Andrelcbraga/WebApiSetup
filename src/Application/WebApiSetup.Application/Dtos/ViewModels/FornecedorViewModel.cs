@@ -9,6 +9,16 @@ namespace WebApiSetup.Application.Dtos.ViewModels
 {
     public class FornecedorViewModel
     {
+        public FornecedorViewModel(Guid id, string nome, string documento, int tipoFornecedor, EnderecoViewModel endereco, bool ativo)
+        {
+            Id = id;
+            Nome = nome;
+            Documento = documento;
+            TipoFornecedor = tipoFornecedor;
+            Endereco = endereco;
+            Ativo = ativo;
+        }
+
         [Key]
         public Guid Id { get; set; }
 

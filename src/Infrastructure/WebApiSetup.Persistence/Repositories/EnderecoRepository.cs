@@ -1,6 +1,5 @@
 ﻿using WebApiSetup.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using WebApiSetup.Persistence.Context;
 using WebApiSetup.Domain.Interfaces;
 
 namespace WebApiSetup.Persistence.Repositories
@@ -13,6 +12,11 @@ namespace WebApiSetup.Persistence.Repositories
         {
             return await Db.Enderecos.AsNoTracking()
                 .FirstOrDefaultAsync(f => f.FornecedorId == fornecedorId);
+        }
+            
+        public async Task<IEnumerable<Endereco>> ObterTodos()
+        {
+            return Db.Enderecos.AsNoTracking();  
         }
     }
 }

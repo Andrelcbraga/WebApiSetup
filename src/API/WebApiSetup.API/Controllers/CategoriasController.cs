@@ -19,7 +19,7 @@ namespace WebApiSetup.API.V1.Controllers
         [HttpGet("{categoriaId}")]
         public async Task<ActionResult<Categoria>> GetCategoria(Guid categoriaId)
         {
-            return Ok();
+            return  Ok();
         }
 
     }

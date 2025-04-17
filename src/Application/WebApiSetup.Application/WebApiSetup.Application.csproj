@@ -8,11 +8,15 @@
 
   <ItemGroup>
     <Folder Include="Dtos\InputModels\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\API\WebApiSetup.API\WebApiSetup.API.csproj" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Domain\WebApiSetup.Domain\WebApiSetup.Domain.csproj" />
   </ItemGroup>
 
 </Project>
