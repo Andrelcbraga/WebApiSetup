@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApiSetup.Domain.Entities
+namespace ApiCatalogo.Domain.Entities
 {
     public enum TipoFornecedor
     {

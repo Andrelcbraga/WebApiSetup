@@ -1,12 +1,13 @@
 ﻿
-using WebApiSetup.Domain.Entities;
 
-namespace WebApiSetup.Domain.Interfaces
+
+using ApiCatalogo.Domain.Entities;
+
+namespace ApiCatalogo.Domain.Interfaces
 {
-    public interface IProdutoRepository : IRepository<Produto>
+    public interface IProdutoRepository
     {
-        Task<IEnumerable<Produto>> ObterProdutosPorFornecedor(Guid fornecedorId);
-        Task<IEnumerable<Produto>> ObterProdutosFornecedores();
-        Task<Produto> ObterProdutoFornecedor(Guid id);
+        Task<Produto?> ObterProdutoPorIdAsync(int produtoId);
+        Task<IEnumerable<Produto?>> ObterProdutosAsync();
     }
 }

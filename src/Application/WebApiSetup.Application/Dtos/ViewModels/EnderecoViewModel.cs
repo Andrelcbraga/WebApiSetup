@@ -1,6 +1,6 @@
 ﻿
 
-namespace WebApiSetup.Application.Dtos.ViewModels
+namespace ApiCatalogo.Application.Dtos.ViewModels
 {
     public record EnderecoViewModel(
         Guid Id,

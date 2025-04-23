@@ -1,15 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
+using ApiCatalogo.Domain.Entities;
 
-namespace WebApiSetup.Domain.Entidades
+namespace ApiCatalogo.Domain.Entities
 {
     public class Categoria
     {
-        public Guid CategoriaId { get; private set; }
-        public string Descricao { get; private set; } = string.Empty;
-        //public ICollection<Evento> Eventos { get; set; }
+        public Categoria()
+        {
+            Produtos = new Collection<Produto>();
+        }
+
+        public int CategoriaId { get; set; }
+
+        [Required]
+        [StringLength(80)]
+        public string? Nome { get; set; }
+
+        [Required]
+        [StringLength(300)]
+        public string? ImagemUrl { get; set; }
+
+        [JsonIgnore]
+        public ICollection<Produto>? Produtos { get; set; }
     }
 }

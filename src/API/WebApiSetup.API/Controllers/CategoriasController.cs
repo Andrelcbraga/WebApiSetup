@@ -1,25 +1,34 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using WebApiSetup.Domain.Entidades;
+﻿using ApiCatalogo.Application.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
+using ApiCatalogo.Domain.Entities;
 
-namespace WebApiSetup.API.V1.Controllers
+namespace ApiCatalogo.API.Controllers
 {
-    public class CategoriasController : Controller
+    [Route("[controller]")]
+    [ApiController]
+    public class CategoriasController : ControllerBase
     {
-        public CategoriasController()
-        {
+        private readonly ICategoriaService _service;
 
+        public CategoriasController(ICategoriaService service)
+        {
+            _service = service;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categoria>>> GetCategorias()
         {
-            return Ok();
+            var categorias = await _service.GetCategorias();
+
+            return Ok(categorias);
         }
 
-        [HttpGet("{categoriaId}")]
-        public async Task<ActionResult<Categoria>> GetCategoria(Guid categoriaId)
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Categoria>> GetCategoriaById(int id)
         {
-            return  Ok();
+            var categoria = await _service.GetCategoriaById(id);
+
+            return Ok(categoria);
         }
 
     }

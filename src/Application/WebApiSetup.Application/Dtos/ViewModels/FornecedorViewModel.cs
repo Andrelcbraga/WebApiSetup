@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApiSetup.Application.Dtos.ViewModels
+namespace ApiCatalogo.Application.Dtos.ViewModels
 {
     public class FornecedorViewModel
     {

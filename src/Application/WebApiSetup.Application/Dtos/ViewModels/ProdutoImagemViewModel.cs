@@ -8,7 +8,7 @@ using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 
-namespace WebApiSetup.Application.Dtos.ViewModels
+namespace ApiCatalogo.Application.Dtos.ViewModels
 {
     public class ProdutoImagemViewModel
     {

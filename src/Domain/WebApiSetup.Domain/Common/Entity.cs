@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebApiSetup.Domain.Common
+namespace ApiCatalogo.Domain.Common
 {
     public abstract class Entity
     {

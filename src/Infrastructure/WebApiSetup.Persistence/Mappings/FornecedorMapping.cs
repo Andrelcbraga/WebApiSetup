@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebApiSetup.Domain.Entities;
+using ApiCatalogo.Domain.Entities;
 
-namespace WebApiSetup.Persistence.Mappings
+namespace ApiCatalogo.Persistence.Mappings
 {
     internal class FornecedorMapping : IEntityTypeConfiguration<Fornecedor>
     {
@@ -28,9 +28,9 @@ namespace WebApiSetup.Persistence.Mappings
                 .WithOne(e => e.Fornecedor);
 
             // 1 : N => Fornecedor : Produtos
-            builder.HasMany(f => f.Produtos)
-                .WithOne(p => p.Fornecedor)
-                .HasForeignKey(p => p.FornecedorId);
+            //builder.HasMany(f => f.Produtos)
+            //    .WithOne(p => p.Fornecedor)
+            //    .HasForeignKey(p => p.FornecedorId);
 
             builder.ToTable("Fornecedores");
         }

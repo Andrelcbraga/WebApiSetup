@@ -5,9 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebApiSetup.Domain.Entities;
+using ApiCatalogo.Domain.Entities;
 
-namespace WebApiSetup.Persistence.Mappings
+namespace ApiCatalogo.Persistence.Mappings
 {
     public class ProdutoMapping : IEntityTypeConfiguration<Produto>
     {
@@ -23,9 +23,9 @@ namespace WebApiSetup.Persistence.Mappings
                 .IsRequired()
                 .HasColumnType("varchar(1000)");
 
-            builder.Property(p => p.Imagem)
-                .IsRequired()
-                .HasColumnType("varchar(100)");
+            //builder.Property(p => p.Imagem)
+            //    .IsRequired()
+            //    .HasColumnType("varchar(100)");
 
             builder.ToTable("Produtos");
         }
