@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Application\WebApiSetup.Application\ApiCatalogo.Application.csproj" />
-    <ProjectReference Include="..\..\Domain\WebApiSetup.Domain\ApiCatalogo.Domain.csproj" />
+    <ProjectReference Include="..\ApiCatalogo.Domain\ApiCatalogo.Domain.csproj" />
+    <ProjectReference Include="..\WebApiSetup.Application\ApiCatalogo.Application.csproj" />
   </ItemGroup>
 
 </Project>
