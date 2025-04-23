@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Collections.Generic;
 
-namespace WebApiSetup.API.Controllers
+namespace ApiCatalogo.API.Controllers
 {
     [ApiController]
     public class MainController : Controller

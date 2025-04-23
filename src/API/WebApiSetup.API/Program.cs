@@ -1,4 +1,4 @@
-using WebApiSetup.Persistence;
+using ApiCatalogo.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 

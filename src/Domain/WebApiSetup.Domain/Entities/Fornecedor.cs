@@ -1,6 +1,6 @@
-﻿using WebApiSetup.Domain.Common;
+﻿using ApiCatalogo.Domain.Common;
 
-namespace WebApiSetup.Domain.Entities
+namespace ApiCatalogo.Domain.Entities
 {
     public class Fornecedor : Entity
     {

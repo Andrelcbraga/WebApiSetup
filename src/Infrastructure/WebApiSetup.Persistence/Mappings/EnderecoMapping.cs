@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
-using WebApiSetup.Domain.Entities;
+using ApiCatalogo.Domain.Entities;
 
-namespace WebApiSetup.Persistence.Mappings
+namespace ApiCatalogo.Persistence.Mappings
 {
     internal class EnderecoMapping : IEntityTypeConfiguration<Endereco>
     {

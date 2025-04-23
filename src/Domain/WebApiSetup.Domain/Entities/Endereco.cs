@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebApiSetup.Domain.Common;
+using ApiCatalogo.Domain.Common;
+using ApiCatalogo.Domain.Entities;
 
-namespace WebApiSetup.Domain.Entities
+namespace ApiCatalogo.Domain.Entities
 {
     public class Endereco : Entity
     {

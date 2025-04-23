@@ -1,28 +1,40 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using WebApiSetup.Domain.Entities;
-using WebApiSetup.Domain.Interfaces;
+using ApiCatalogo.Domain.Entities;
+using ApiCatalogo.Domain.Interfaces;
 
-namespace WebApiSetup.Persistence.Repositories
+namespace ApiCatalogo.Infrastructure.Repositories
 {
-    public class ProdutoRepository : Repository<Produto>, IProdutoRepository
+    public class ProdutoRepository : IProdutoRepository
     {
-        public ProdutoRepository(AppDbContext context) : base(context) { }
-        
-        public async Task<Produto> ObterProdutoFornecedor(Guid id)
+        private readonly AppDbContext _appDbContext;
+        ProdutoRepository(AppDbContext dbContext)
         {
-            return await Db.Produtos.AsNoTracking().Include(f => f.Fornecedor)
-                .FirstOrDefaultAsync(p => p.Id == id);
+            _appDbContext = dbContext;
         }
 
-        public async Task<IEnumerable<Produto>> ObterProdutosFornecedores()
+        public async Task<Produto?> ObterProdutoPorIdAsync(int produtoId)
         {
-            return await Db.Produtos.AsNoTracking().Include(f => f.Fornecedor)
-                .OrderBy(p => p.Nome).ToListAsync();
+            var produto = await _appDbContext.Produtos.FirstOrDefaultAsync(p => p.ProdutoId == produtoId);
+
+            if (produto is null)
+            {
+                return null;
+            }
+
+            return produto;
+
         }
 
-        public async Task<IEnumerable<Produto>> ObterProdutosPorFornecedor(Guid fornecedorId)
+        public async Task<IEnumerable<Produto?>> ObterProdutosAsync()
         {
-            return await Buscar(p => p.FornecedorId == fornecedorId);
+            var produtos = await _appDbContext.Produtos.AsNoTracking().ToListAsync();
+            if (produtos is null)
+            {
+                return null;
+            }
+            return produtos;
         }
+
+
     }
 }

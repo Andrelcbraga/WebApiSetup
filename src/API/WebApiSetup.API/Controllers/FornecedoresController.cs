@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApiSetup.API.Controllers;
-using WebApiSetup.Application.Dtos.ViewModels;
-using WebApiSetup.Application.Services.Interfaces;
+using ApiCatalogo.API.Controllers;
+using ApiCatalogo.Application.Dtos.ViewModels;
+using ApiCatalogo.Application.Services.Interfaces;
 
-namespace WebApiSetup.API.V1.Controllers
+namespace ApiCatalogo.API.V1.Controllers
 {
     [Route("api/(fornecedores")]
     public class FornecedoresController : MainController
@@ -18,7 +18,7 @@ namespace WebApiSetup.API.V1.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<FornecedorViewModel>>> ObterTodos()
         {
-            var fornecedor = await _FornecedorService.ObterTodos();
+            var fornecedor = await _FornecedorService.ObterTodosAsync();
 
             return Ok(fornecedor);
         }
