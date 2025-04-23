@@ -12,8 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ApiCatalogo.Application\ApiCatalogo.Application.csproj" />
     <ProjectReference Include="..\ApiCatalogo.Infrastructure\ApiCatalogo.Infrastructure.csproj" />
-    <ProjectReference Include="..\WebApiSetup.Application\ApiCatalogo.Application.csproj" />
   </ItemGroup>
 
 </Project>
