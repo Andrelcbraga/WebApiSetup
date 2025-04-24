@@ -15,6 +15,6 @@ jobs:
         with:
           dotnet-version: 9.x
       - name: Build Project
-        run: dotnet build ./ApiCatalogo/src/ApiCatalogo.API.csproj --no-restore
+        run: dotnet build ./src/ApiCatalogo.API/ApiCatalogo.API.csproj --no-restore
 
       
