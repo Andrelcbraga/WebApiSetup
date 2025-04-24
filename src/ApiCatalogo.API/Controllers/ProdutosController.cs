@@ -4,6 +4,8 @@ using ApiCatalogo.Application.Services.Interfaces;
 
 namespace ApiCatalogo.API.Controllers
 {
+    [Route("Produtos")]
+    [ApiController]
     public class ProdutosController : ControllerBase
     {
         private readonly IProdutoService _produtoService;
@@ -13,6 +15,10 @@ namespace ApiCatalogo.API.Controllers
             _produtoService = produtoService;
         }
 
+        /// <summary>
+        /// Busca todos os produtos por paginação e ordenação.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult<IEnumerable<Produto>> GetAsync()
         {
@@ -22,6 +28,10 @@ namespace ApiCatalogo.API.Controllers
             return Ok(produtos);
         }
 
+        /// <summary>
+        /// Busca todos os produtos por Por Id.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "ObterProduto")]
         public async Task<ActionResult<Produto>> GetByIdAsync(int id)
         {
@@ -31,19 +41,26 @@ namespace ApiCatalogo.API.Controllers
             return Ok(produto);
         }
 
+         /// <summary>
+        /// Cadastra os produtos.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Post(Produto produto)
         {
             if (produto is null)
                 return BadRequest();
 
-            //AppDbContext.Produtos.Add(produto);
-            //_context.SaveChanges();
+            var novoProduto = _produtoService.Create(produto);
 
             return new CreatedAtRouteResult("ObterProduto",
-                new { id = produto.ProdutoId }, produto);
+                new { id = novoProduto.ProdutoId }, novoProduto);
         }
 
+        /// <summary>
+        /// Atualiza os produtos
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("{id:int}")]
         public ActionResult Put(int id, Produto produto)
         {
@@ -58,6 +75,10 @@ namespace ApiCatalogo.API.Controllers
             return Ok(produto);
         }
 
+         /// <summary>
+        /// Exclui os produtos.
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("{id:int}")]
         public ActionResult Delete(int id)
         {

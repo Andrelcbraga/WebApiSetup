@@ -1,19 +1,21 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
+    
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    
+    <ContainerImageTags>1.0.0;latest</ContainerImageTags>
+    <ContainerRepository>apicatalogo</ContainerRepository>
+    <PublishProfile>DefaultContainer</PublishProfile>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\ApiCatalogo.Application\ApiCatalogo.Application.csproj" />
     <ProjectReference Include="..\ApiCatalogo.Infrastructure\ApiCatalogo.Infrastructure.csproj" />
   </ItemGroup>
-
 </Project>
