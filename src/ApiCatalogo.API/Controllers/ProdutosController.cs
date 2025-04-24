@@ -4,6 +4,8 @@ using ApiCatalogo.Application.Services.Interfaces;
 
 namespace ApiCatalogo.API.Controllers
 {
+    [Route("Produtos")]
+    [ApiController]
     public class ProdutosController : ControllerBase
     {
         private readonly IProdutoService _produtoService;
@@ -13,6 +15,11 @@ namespace ApiCatalogo.API.Controllers
             _produtoService = produtoService;
         }
 
+        /// <summary>
+        /// Busca todos os produtos por paginação e ordenação.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet]
         public ActionResult<IEnumerable<Produto>> GetAsync()
         {
@@ -37,11 +44,10 @@ namespace ApiCatalogo.API.Controllers
             if (produto is null)
                 return BadRequest();
 
-            //AppDbContext.Produtos.Add(produto);
-            //_context.SaveChanges();
+            var novoProduto = _produtoService.Create(produto);
 
             return new CreatedAtRouteResult("ObterProduto",
-                new { id = produto.ProdutoId }, produto);
+                new { id = novoProduto.ProdutoId }, novoProduto);
         }
 
         [HttpPut("{id:int}")]
