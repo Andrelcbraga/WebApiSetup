@@ -18,7 +18,6 @@ namespace ApiCatalogo.API.Controllers
         /// <summary>
         /// Busca todos os produtos por paginação e ordenação.
         /// </summary>
-        /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
         public ActionResult<IEnumerable<Produto>> GetAsync()
@@ -29,6 +28,10 @@ namespace ApiCatalogo.API.Controllers
             return Ok(produtos);
         }
 
+        /// <summary>
+        /// Busca todos os produtos por Por Id.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("{id}", Name = "ObterProduto")]
         public async Task<ActionResult<Produto>> GetByIdAsync(int id)
         {
@@ -38,6 +41,10 @@ namespace ApiCatalogo.API.Controllers
             return Ok(produto);
         }
 
+         /// <summary>
+        /// Cadastra os produtos.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Post(Produto produto)
         {
@@ -50,6 +57,10 @@ namespace ApiCatalogo.API.Controllers
                 new { id = novoProduto.ProdutoId }, novoProduto);
         }
 
+        /// <summary>
+        /// Atualiza os produtos
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("{id:int}")]
         public ActionResult Put(int id, Produto produto)
         {
@@ -64,6 +75,10 @@ namespace ApiCatalogo.API.Controllers
             return Ok(produto);
         }
 
+         /// <summary>
+        /// Exclui os produtos.
+        /// </summary>
+        /// <returns></returns>
         [HttpDelete("{id:int}")]
         public ActionResult Delete(int id)
         {

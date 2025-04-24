@@ -17,6 +17,10 @@ namespace ApiCatalogo.API.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// Busca todas as categorias.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Categoria>>> GetCategorias()
         {
@@ -25,6 +29,10 @@ namespace ApiCatalogo.API.Controllers
             return Ok(categorias);
         }
 
+         /// <summary>
+        /// Busca todos os produtos por Por Id.
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("{id:int}", Name = "ObterCategoria")]
         public async Task<ActionResult<Categoria>> GetCategoriaById(int id)
         {
@@ -38,6 +46,10 @@ namespace ApiCatalogo.API.Controllers
             return Ok(categoria);
         }
 
+        /// <summary>
+        /// Busca todos os produtos por Por Id.
+        /// </summary>
+        /// <returns></returns>
         [HttpPost]
         public ActionResult Post(Categoria categoria)
         {
@@ -51,6 +63,10 @@ namespace ApiCatalogo.API.Controllers
 
         }
 
+ /// <summary>
+        /// Busca todos os produtos por Por Id.
+        /// </summary>
+        /// <returns></returns>
         [HttpPut("{id:int}")]
         public ActionResult Put(int id, Categoria categoria)
         {
