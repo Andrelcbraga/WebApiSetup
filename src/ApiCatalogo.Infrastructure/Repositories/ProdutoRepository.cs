@@ -1,40 +1,63 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ApiCatalogo.Domain.Entities;
+﻿using ApiCatalogo.Domain.Entities;
 using ApiCatalogo.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApiCatalogo.Infrastructure.Repositories
 {
     public class ProdutoRepository : IProdutoRepository
     {
         private readonly AppDbContext _appDbContext;
-        ProdutoRepository(AppDbContext dbContext)
+        public ProdutoRepository(AppDbContext dbContext)
         {
             _appDbContext = dbContext;
         }
-
-        public async Task<Produto?> ObterProdutoPorIdAsync(int produtoId)
+        public IQueryable<Produto> GetProdutos()
         {
-            var produto = await _appDbContext.Produtos.FirstOrDefaultAsync(p => p.ProdutoId == produtoId);
+            return _appDbContext.Produtos;
+        }
+        public async Task<Produto> GetProduto(int id)
+        {
+            var produto = await _appDbContext.Produtos.FirstOrDefaultAsync(c => c.ProdutoId == id);
 
-            if (produto is null)
+            if (produto == null)
             {
-                return null;
+                throw new InvalidOperationException("Produto é null");
             }
-
             return produto;
-
         }
-
-        public async Task<IEnumerable<Produto?>> ObterProdutosAsync()
+        public Produto Create(Produto produto)
         {
-            var produtos = await _appDbContext.Produtos.AsNoTracking().ToListAsync();
-            if (produtos is null)
+            if (produto == null)
             {
-                return null;
+                throw new InvalidOperationException("Produto é null");
             }
-            return produtos;
+            _appDbContext.Produtos.Add(produto);
+            _appDbContext.SaveChanges();
+            return produto;
+        }
+        public bool Update(Produto produto)
+        {
+            if (produto == null) throw new InvalidOperationException("Produto é null");
+
+            if (_appDbContext.Produtos.Any(p => p.ProdutoId == produto.ProdutoId))
+            {
+                _appDbContext.Produtos.Update(produto);
+                _appDbContext.SaveChanges();
+                return true;
+            }
+            return false;
         }
 
-
+        public bool Delete(int id)
+        {
+            var produto = _appDbContext.Produtos.Find(id);
+            if (produto is not null)
+            {
+                _appDbContext.Produtos.Remove(produto);
+                _appDbContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
     }
 }

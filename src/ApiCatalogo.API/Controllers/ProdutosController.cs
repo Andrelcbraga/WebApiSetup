@@ -1,30 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ApiCatalogo.Domain.Entities;
-using ApiCatalogo.Infrastructure;
+using ApiCatalogo.Application.Services.Interfaces;
 
 namespace ApiCatalogo.API.Controllers
 {
     public class ProdutosController : ControllerBase
     {
-        public ProdutosController()
+        private readonly IProdutoService _produtoService;
+
+        public ProdutosController(IProdutoService produtoService)
         {
+            _produtoService = produtoService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Produto>>> GetAsync()
+        public ActionResult<IEnumerable<Produto>> GetAsync()
         {
-            return Ok();
+            var produtos = _produtoService.GetProdutos();
+            if (produtos is null) return NotFound();
+
+            return Ok(produtos);
         }
 
-        [HttpGet("{id}", Name = "GetProduto")]
+        [HttpGet("{id}", Name = "ObterProduto")]
         public async Task<ActionResult<Produto>> GetByIdAsync(int id)
         {
-            return Ok();
+            var produto = await _produtoService.GetProdutoById(id);
+
+            if (produto is null) return NotFound();
+            return Ok(produto);
         }
 
         [HttpPost]
-        public  ActionResult Post(Produto produto)
+        public ActionResult Post(Produto produto)
         {
             if (produto is null)
                 return BadRequest();
@@ -56,14 +64,14 @@ namespace ApiCatalogo.API.Controllers
             //var produto = _context.Produtos.FirstOrDefault(p => p.ProdutoId == id);
             //var produto = _context.Produtos.Find(id);
 
-           // if (produto is null)
+            // if (produto is null)
             {
                 return NotFound("Produto não localizado...");
             }
-           // _context.Produtos.Remove(produto);
-           // _context.SaveChanges();
+            // _context.Produtos.Remove(produto);
+            // _context.SaveChanges();
 
-           // return Ok(produto);
+            // return Ok(produto);
         }
 
     }
