@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ApiCatalogo.Domain.Entities;
-using ApiCatalogo.Domain.Entities;
 
 namespace ApiCatalogo.Infrastructure
 {

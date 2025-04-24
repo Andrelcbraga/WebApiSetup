@@ -18,7 +18,7 @@ namespace ApiCatalogo.API.Controllers
         }
 
         /// <summary>
-        /// Busca todas as categorias.
+        // Busca todos os produtos por Por Id.
         /// </summary>
         /// <returns></returns>
         [HttpGet]
