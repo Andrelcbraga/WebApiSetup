@@ -18,7 +18,6 @@ namespace ApiCatalogo.Domain.Entities
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
-        /* EF Relation */
         public Fornecedor Fornecedor { get; set; }
     }
 }
