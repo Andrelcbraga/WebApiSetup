@@ -27,6 +27,8 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
+// teste  comentario api
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
