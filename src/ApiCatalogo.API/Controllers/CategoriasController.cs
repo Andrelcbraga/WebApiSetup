@@ -40,7 +40,7 @@ namespace ApiCatalogo.API.Controllers
 
             if (categoria == null)
             {
-                return NotFound("Categoria não encotrada");
+                return NotFound("Categoria não encotrad");
             }
 
             return Ok(categoria);
